@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cereales El Líder - Presentación para Inversionistas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            color: #333;
+            line-height: 1.6;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+            height: 100vh;
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .slide {
+            min-height: 100vh;
+            height: 100vh;
+            padding: 60px 40px;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            overflow-y: auto;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #d4af37;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #1a1a2e;
+            margin-bottom: 30px;
+            border-bottom: 4px solid #d4af37;
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #1a1a2e;
+            margin: 25px 0 15px 0;
+        }
+
+        h3 {
+            font-size: 1.3em;
+            color: #333;
+            margin: 15px 0 10px 0;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            color: #d4af37;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+            background: white;
+        }
+
+        th {
+            background: #f5f5f5;
+            color: #1a1a2e;
+            padding: 12px 10px;
+            text-align: left;
+            border-bottom: 3px solid #d4af37;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:hover {
+            background: #f9f9f9;
+        }
+
+        .number {
+            text-align: right;
+        }
+
+        .highlight-box {
+            background: #fff8dc;
+            border-left: 5px solid #d4af37;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .alert-box {
+            background: #fff0f0;
+            border-left: 5px solid #e74c3c;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .success-box {
+            background: #d4edda;
+            border-left: 5px solid #27ae60;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .info-box {
+            background: #e7f3ff;
+            border-left: 5px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 5px 0;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 25px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .cover-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+        .cover-slide h1 {
+            font-size: 4em;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        .cover-slide .subtitle {
+            font-size: 2em;
+            margin-bottom: 40px;
+        }
+
+        .cover-slide img {
+            max-width: 500px;
+            width: 100%;
+            margin: 30px 0;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 20px;
+            background: #f8f8f8;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .slide-number {
+            position: fixed;
+            bottom: 20px;
+            right: 40px;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            font-size: 0.9em;
+            color: #666;
+            z-index: 1000;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .nav-indicator {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: #d4af37;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        .nav-dot:hover {
+            background: #c19b2e;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            h3 {
+                font-size: 1.1em;
+            }
+
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            table {
+                font-size: 0.75em;
+            }
+
+            th, td {
+                padding: 6px 4px;
+            }
+
+            .cover-slide h1 {
+                font-size: 2.5em;
+            }
+
+            .cover-slide .subtitle {
+                font-size: 1.3em;
+            }
+
+            .cover-slide img {
+                max-width: 90%;
+            }
+
+            .logo {
+                position: static;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .slide-number {
+                bottom: 10px;
+                right: 10px;
+                padding: 8px 15px;
+                font-size: 0.8em;
+            }
+
+            .navigation {
+                bottom: 60px;
+                padding: 8px 15px;
+            }
+
+            .nav-dot {
+                width: 8px;
+                height: 8px;
+            }
+
+            .nav-dot.active {
+                width: 24px;
+            }
+        }
+
+        @media print {
+            .slide {
+                page-break-after: always;
+                min-height: auto;
+            }
+
+            .slide-number,
+            .navigation {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="slideContainer">
+        <!-- SLIDE 1: Historia de la Compañía -->
+    <div class="slide cover-slide" id="slide1">
+
+        <h1>CEREALES EL LÍDER</h1>
+        <div class="subtitle">Oportunidad de Inversión Inmobiliaria</div>
+        
+		<img src="Cereales_Map.png" alt="Mapa de Bogotá y Soacha" style="width: 50%;">
+        
+        <p style="font-size: 1.3em; margin-top: 20px;"><strong>Portafolio de 5 inmuebles valorados en $18.868 MM</strong></p>
+        <p style="font-size: 1.2em; color: #666;">Ubicaciones estratégicas en Bogotá y Soacha</p>
+    </div>
+
+    <!-- SLIDE 2: PORTADA -->
+    <div class="slide" id="slide2">
+		
+        <div class="logo">CEREALES EL LÍDER</div>
+        <h1>Historia de la Compañía</h1>
+        
+        <h2>CEREALES EL LÍDER Y CÍA S.C.A.</h2>
+        
+        <h3>Línea de Tiempo</h3>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 15%;">Año</th>
+                    <th>Hito</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1995</strong></td>
+                    <td>• Constitución como Sociedad en Comandita Simple<br>• Actividad: Panadería, bizcochería y administración inmobiliaria</td>
+                </tr>
+                <tr>
+                    <td><strong>2008</strong></td>
+                    <td>• Transformación a Sociedad en Comandita por Acciones</td>
+                </tr>
+                <tr>
+                    <td><strong>Ago 2020</strong></td>
+                    <td>• Fallecimiento del socio gestor Roberto Romero Liévano<br>• Inicio de proceso judicial civil</td>
+                </tr>
+                <tr>
+                    <td><strong>28 Oct 2024</strong></td>
+                    <td>• Firma de Contrato de Transacción Extrajudicial con El Arrozal<br>• Resolución del litigio y definición de términos de arrendamiento</td>
+                </tr>
+                <tr>
+                    <td><strong>Dic 2025</strong></td>
+                    <td>• Devolución programada de inmuebles</td>
+                </tr>
+                <tr>
+                    <td><strong>1 Ene 2026</strong></td>
+                    <td>• Entrada en vigor de nuevos cánones de arrendamiento</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="highlight-box">
+            <strong>📍 Situación Actual:</strong> Empresa en transición post-acuerdo, con portafolio inmobiliario consolidado de $18.868 MM en proceso de recuperación operativa.
+        </div>
+    </div>
+
+    <!-- SLIDE 3: La Oportunidad -->
+    <div class="slide" id="slide3">
+        <div class="logo">CEREALES EL LÍDER</div>
+        <h1>La Oportunidad</h1>
+        
+        <div class="two-columns">
+            <div>
+                <h3 style="color: #27ae60;">✓ Activos de Calidad</h3>
+                <ul>
+                    <li><strong>$18.868 MM</strong> en activos inmobiliarios</li>
+                    <li><strong>5 propiedades comerciales</strong> arrendadas</li>
+                    <li><strong>Ubicaciones estratégicas:</strong> Puntos con alta densidad poblacional en el sur y occidente de Bogotá y Soacha</li>
+                    <li><strong>Inquilinos establecidos:</strong> Supermercados y comercio</li>
+                    <li><strong>Balance sólido:</strong> 96% del activo es inmobiliario</li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="color: #e74c3c;">⚠ Situación Actual</h3>
+                <ul>
+                    <li><strong>Sin ingresos operativos</strong> desde enero 2025</li>
+                    <li><strong>$644 MM</strong> en prediales vencidos</li>
+                    <li><strong>Inquilino único en mora</strong> (El Arrozal debe $150 MM)</li>
+                    <li><strong>Pérdida operativa:</strong> $275 MM (sep 2025)</li>
+                    <li><strong>Liquidez comprometida</strong> - requiere acción inmediata</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <strong>Aspectos Destacados:</strong> Empresa con activos de alta calidad y bajo endeudamiento (4,2%) que atraviesa situación de liquidez temporal por mora de inquilino único. Los activos mantienen su valor mientras la situación operativa es reversible.
+        </div>
+    </div>
+
+    <!-- SLIDE 4: Portafolio Inmobiliario -->
+    <div class="slide" id="slide4">
+        <div class="logo">CEREALES EL LÍDER</div>
+        <h1>Portafolio Inmobiliario</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Dirección</th>
+                    <th>Uso Actual</th>
+                    <th class="number">Área (m²)</th>
+                    <th class="number">Valor Comercial</th>
+                    <th class="number">Predial Adeudado</th>
+                    <th class="number">Canon/Mes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Transv. 77M 65B 24 Sur</strong><br><small style="color: #666;">Mat. 50S-658276 | Bosa</small></td>
+                    <td>Supermercado Azucena</td>
+                    <td class="number">1.000,0</td>
+                    <td class="number" style="font-weight: bold; color: #27ae60;">$5.454 MM</td>
+                    <td class="number" style="font-weight: bold; color: #e74c3c;">$235 MM</td>
+                    <td class="number" style="font-weight: bold;">$18,5 MM</td>
+                </tr>
+                <tr>
+                    <td><strong>AK 70 # 64I-03</strong><br><small style="color: #666;">Mat. 50C603129 | Estrada</small></td>
+                    <td>Supermercado Estrada</td>
+                    <td class="number">702,9</td>
+                    <td class="number" style="font-weight: bold; color: #27ae60;">$7.521 MM</td>
+                    <td class="number" style="font-weight: bold; color: #e74c3c;">$195 MM</td>
+                    <td class="number" style="font-weight: bold;">$22,4 MM</td>
+                </tr>
+                <tr>
+                    <td><strong>Calle 11 # 11-47</strong><br><small style="color: #666;">Mat. 051-6460 | Soacha</small></td>
+                    <td>Supermercado Despensa</td>
+                    <td class="number">381,7</td>
+                    <td class="number" style="font-weight: bold; color: #27ae60;">$2.348 MM</td>
+                    <td class="number" style="font-weight: bold; color: #e74c3c;">$85 MM</td>
+                    <td class="number" style="font-weight: bold;">$6,7 MM</td>
+                </tr>
+                <tr>
+                    <td><strong>Calle 65 Sur 78-11</strong><br><small style="color: #666;">Mat. 50S-463233 | Bosa</small></td>
+                    <td>Bodega Abusai</td>
+                    <td class="number">266,0</td>
+                    <td class="number" style="font-weight: bold; color: #27ae60;">$1.274 MM</td>
+                    <td class="number" style="font-weight: bold; color: #e74c3c;">$65 MM</td>
+                    <td class="number" style="font-weight: bold;">$6,0 MM</td>
+                </tr>
+                <tr>
+                    <td><strong>Calle 38C Sur 73 29</strong><br><small style="color: #666;">Mat. 50S-40702834 | Kennedy</small></td>
+                    <td>Casa Carvajal</td>
+                    <td class="number">369,0</td>
+                    <td class="number" style="font-weight: bold; color: #27ae60;">$2.270 MM</td>
+                    <td class="number" style="font-weight: bold; color: #e74c3c;">$64 MM</td>
+                    <td class="number" style="font-weight: bold;">$5,5 MM</td>
+                </tr>
+                <tr style="background: #f0f0f0; font-weight: bold;">
+                    <td colspan="2" style="text-align: right;">TOTALES:</td>
+                    <td class="number">2.719,6</td>
+                    <td class="number" style="color: #d4af37; font-size: 1.1em;">$18.868 MM</td>
+                    <td class="number" style="color: #e74c3c; font-size: 1.1em;">$644 MM</td>
+                    <td class="number" style="color: #27ae60; font-size: 1.1em;">$59,1 MM</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="two-columns">
+            <div class="highlight-box">
+                <strong>Valor Promedio:</strong><br>
+                $6,9 MM por m²<br>
+                <small style="color: #666;">Basado en valor comercial estimado</small>
+            </div>
+            <div class="highlight-box">
+                <strong>Potencial de Ingresos:</strong><br>
+                • Mensual: $59,1 MM<br>
+                • Anual: $709,4 MM<br>
+                <strong>Rendimiento: 3,76% anual</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: Situación Financiera -->
+    <div class="slide" id="slide5">
+        <div class="logo">CEREALES EL LÍDER</div>
+        <h1>Situación Financiera</h1>
+        
+        <div class="two-columns">
+            <div>
+                <h2>Balance General (Sep 2025)</h2>
+                <table>
+                    <tr style="background: #e7f3ff;">
+                        <td><strong>Activos Totales</strong></td>
+                        <td class="number" style="font-weight: bold; color: #3498db;">$20.488 MM</td>
+                    </tr>
+                    <tr>
+                        <td>• Propiedades</td>
+                        <td class="number">$18.868 MM</td>
+                    </tr>
+                    <tr>
+                        <td>• Otros activos</td>
+                        <td class="number">$1.620 MM</td>
+                    </tr>
+                    <tr style="background: #fff0f0;">
+                        <td><strong>Pasivos Totales</strong></td>
+                        <td class="number" style="font-weight: bold; color: #e74c3c;">$851 MM</td>
+                    </tr>
+                    <tr>
+                        <td>• Predial por pagar</td>
+                        <td class="number">$644 MM</td>
+                    </tr>
+                    <tr>
+                        <td>• Costas judiciales</td>
+                        <td class="number">$133 MM</td>
+                    </tr>
+                    <tr>
+                        <td>• Otros pasivos</td>
+                        <td class="number">$74 MM</td>
+                    </tr>
+                    <tr style="background: #d4edda;">
+                        <td><strong>Patrimonio</strong></td>
+                        <td class="number" style="font-weight: bold; color: #27ae60;">$19.636 MM</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div>
+                <h2>Estado de Resultados</h2>
+                <table style="margin-bottom: 10px;">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th class="number">2024 (12m)</th>
+                            <th class="number">2025 (9m)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ingresos operacionales</td>
+                            <td class="number">$2,0 MM</td>
+                            <td class="number">$2,0 MM</td>
+                        </tr>
+                        <tr style="background: #fff0f0;">
+                            <td>Gastos operacionales</td>
+                            <td class="number">-$558 MM</td>
+                            <td class="number">-$277 MM</td>
+                        </tr>
+                        <tr style="background: #fee; font-weight: bold;">
+                            <td><strong>Pérdida del ejercicio</strong></td>
+                            <td class="number" style="color: #e74c3c;">-$556 MM</td>
+                            <td class="number" style="color: #e74c3c;">-$275 MM</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="metric">
+                    <div class="metric-label">RATIO DE ENDEUDAMIENTO</div>
+                    <div class="metric-value">4,2%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-columns" style="margin-top: 2px;">
+            <div class="success-box">
+                <h3 style="margin-top: 0;">Aspectos Positivos</h3>
+                <ul style="margin: 10px 0 0 10px;">
+                    <li>Bajo endeudamiento: 4,2%</li>
+                    <li>Activos inmobiliarios de calidad: $18.868 MM</li>
+                    <li>Ubicaciones estratégicas con alta demanda</li>
+                </ul>
+            </div>
+
+            <div class="alert-box">
+                <h3 style="margin-top: 0;">Desafíos Persistentes</h3>
+                <ul style="margin: 10px 0 0 10px;">
+                    <li>Sin ingresos operativos desde enero 2025</li>
+                    <li>Prediales vencidos: $644 MM (76% de pasivos)</li>
+                    <li>Mora de El Arrozal: $150 MM + cánones</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="font-size: 0.9em; margin-top: 5px;">
+            <strong>Nota:</strong> La empresa no genera ingresos operativos. Las pérdidas corresponden principalmente a gastos administrativos y prediales. La recuperación de inmuebles es crucial para reactivar el flujo de caja.
+        </div>
+    </div>
+
+    <!-- SLIDE 6: Proceso Legal y Recuperación -->
+    <div class="slide" id="slide6">
+        <div class="logo">CEREALES EL LÍDER</div>
+        <h1>Proceso Legal y Recuperación de Inmuebles</h1>
+        
+        <div class="highlight-box">
+            <h3 style="margin-top: 0;">Situación con El Arrozal</h3>
+            <p style="margin: 10px 0;">
+                <strong>Inquilino:</strong> EL ARROZAL Y CIA S.C.A.<br>
+                <strong>Contratos:</strong> 5 inmuebles arrendados desde 2018<br>
+                <strong>Deuda contractual:</strong> $150 MM (incumplimiento de transacción)<br>
+                <strong>Cánones mensuales no pagados:</strong> $59,1 MM/mes desde enero 2025<br>
+                <strong>Estado legal:</strong> Proceso de restitución activo
+            </p>
+        </div>
+
+        <h2>Inmuebles en Proceso de Recuperación</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Dirección</th>
+                    <th>Matrícula</th>
+                    <th>Uso Actual</th>
+                    <th class="number">Canon/Mes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Transv. 77M 65B 24 Sur, Bosa</td>
+                    <td>50S-658276</td>
+                    <td>Supermercado Azucena</td>
+                    <td class="number" style="font-weight: bold;">$18,5 MM</td>
+                </tr>
+                <tr>
+                    <td>AK 70 # 64I-03, Estrada</td>
+                    <td>50C603129</td>
+                    <td>Supermercado Estrada</td>
+                    <td class="number" style="font-weight: bold;">$22,4 MM</td>
+                </tr>
+                <tr>
+                    <td>Calle 11 # 11-47, Soacha</td>
+                    <td>051-6460</td>
+                    <td>Supermercado Despensa</td>
+                    <td class="number" style="font-weight: bold;">$6,7 MM</td>
+                </tr>
+                <tr>
+                    <td>Calle 65 Sur 78-11, Bosa</td>
+                    <td>50S-463233</td>
+                    <td>Bodega Abusai</td>
+                    <td class="number" style="font-weight: bold;">$6,0 MM</td>
+                </tr>
+                <tr>
+                    <td>Calle 38C Sur 73 29, Kennedy</td>
+                    <td>50S-40702834</td>
+                    <td>Casa Carvajal</td>
+                    <td class="number" style="font-weight: bold;">$5,5 MM</td>
+                </tr>
+                <tr style="background: #f0f0f0; font-weight: bold;">
+                    <td colspan="3" style="text-align: right;">TOTAL MENSUAL</td>
+                    <td class="number" style="color: #27ae60; font-size: 1.1em;">$59,1 MM</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="alert-box">
+            <strong>Asesoría Legal Activa:</strong> González & González Abogados representa a Cereales El Líder en el proceso de restitución. Honorarios: $15 MM + 10% de prima de éxito sobre recuperación de $150 MM.
+        </div>
+    </div>
+
+    <!-- SLIDE 7: Proyección y Potencial -->
+    <div class="slide" id="slide7">
+
+        <div class="logo">CEREALES EL LÍDER</div>
+        <h1>Proyección y Potencial del Negocio</h1>
+        
+        <h2>Escenarios de Valoración</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Escenario</th>
+                    <th>Base</th>
+                    <th class="number">Valor Portafolio</th>
+                    <th class="number">Menos Pasivos</th>
+                    <th class="number">Valor Neto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Conservador</strong></td>
+                    <td>Valor en libros</td>
+                    <td class="number">$18.868 MM</td>
+                    <td class="number">($851 MM)</td>
+                    <td class="number" style="font-weight: bold; color: #27ae60;">$18.017 MM</td>
+                </tr>
+                <tr>
+                    <td><strong>Moderado</strong></td>
+                    <td>Valor libros + 15%</td>
+                    <td class="number">$21.698 MM</td>
+                    <td class="number">($851 MM)</td>
+                    <td class="number" style="font-weight: bold; color: #27ae60;">$20.847 MM</td>
+                </tr>
+                <tr>
+                    <td><strong>Optimista</strong></td>
+                    <td>Valor libros + 25%</td>
+                    <td class="number">$23.585 MM</td>
+                    <td class="number">($851 MM)</td>
+                    <td class="number" style="font-weight: bold; color: #27ae60;">$22.734 MM</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 style="margin-top: 40px;">Potencial de Ingresos vs Gastos Operacionales</h2>
+        
+        <div class="two-columns">
+            <div>
+                <h3>Ingresos por Arrendamiento</h3>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Supermercado Azucena</td>
+                            <td class="number" style="font-weight: bold;">$18,5 MM/mes</td>
+                        </tr>
+                        <tr>
+                            <td>Supermercado Estrada</td>
+                            <td class="number" style="font-weight: bold;">$22,4 MM/mes</td>
+                        </tr>
+                        <tr>
+                            <td>Supermercado Despensa</td>
+                            <td class="number" style="font-weight: bold;">$6,7 MM/mes</td>
+                        </tr>
+                        <tr>
+                            <td>Bodega Abusai</td>
+                            <td class="number" style="font-weight: bold;">$6,0 MM/mes</td>
+                        </tr>
+                        <tr>
+                            <td>Casa Carvajal</td>
+                            <td class="number" style="font-weight: bold;">$5,5 MM/mes</td>
+                        </tr>
+                        <tr style="background: white; font-weight: bold;">
+                            <td>TOTAL MENSUAL</td>
+                            <td class="number" style="color: #27ae60;">$59,1 MM</td>
+                        </tr>
+                        <tr style="background: #d4f4dd; font-weight: bold;">
+                            <td>TOTAL ANUAL</td>
+                            <td class="number" style="color: #27ae60;">$709,4 MM</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div>
+                <h3>Gastos Operacionales Mensuales</h3>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Revisoría Fiscal</td>
+                            <td class="number" style="font-weight: bold;">$1,8 MM</td>
+                        </tr>
+                        <tr>
+                            <td>Contador</td>
+                            <td class="number" style="font-weight: bold;">$1,7 MM</td>
+                        </tr>
+                        <tr>
+                            <td>Representante Legal</td>
+                            <td class="number" style="font-weight: bold;">$5,0 MM</td>
+                        </tr>
+                        <tr>
+                            <td>Renovación Cámara Comercio</td>
+                            <td class="number" style="font-weight: bold;">$0,75 MM*</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size: 0.85em; color: #666; margin-top: 5px;">*Promedio mensual (pago anual $9 MM en marzo)</p>
+            </div>
+        </div>
+
+        <div class="info-box" style="margin-top: 30px;">
+            <h3 style="margin-top: 0;">Proyección 5 años</h3>
+            <p><strong>Escenario:</strong></p>
+            <ul style="margin: 10px 0 10px 20px;">
+                <li>Recuperación inmuebles</li>
+                <li>Nuevos inquilinos (3-6 meses)</li>
+                <li>Ingresos 5 años: <strong>$3.547 MM</strong></li>
+                <li>Valorización estimada: <strong>15% ($2.830 MM)</strong></li>
+            </ul>
+            <p style="font-size: 1.3em; margin-top: 15px; color: #27ae60;"><strong>Retorno Total: $6.377 MM</strong><br>
+            <span style="font-size: 0.8em; color: #666;">Ingresos + Valorización del activo</span></p>
+        </div>
+
+        <div class="highlight-box">
+            <strong>Nota:</strong> Los cánones corresponden a contratos históricos con El Arrozal. Gastos incluyen operación básica (revisoría, contabilidad, representación legal). Nuevos arrendamientos podrían ajustarse al mercado actual.
+        </div>
+    </div>
+
+		
+    <!-- SLIDE 8: Resumen para el Inversionista -->
+    <div class="slide" id="slide8">
+
+        <div class="logo">CEREALES EL LÍDER</div>
+        <h1>Resumen para el Inversionista</h1>
+        
+        <div class="two-columns">
+            <div>
+                <h2 style="color: #27ae60; margin-top: 0;">El Activo</h2>
+                <div class="metric">
+                    <div class="metric-value">$18.868 MM</div>
+                    <div class="metric-label">En inmuebles comerciales</div>
+                </div>
+                <ul style="margin: 15px 0 15px 20px;">
+                    <li>5 propiedades en Bogotá y Soacha</li>
+                    <li>Inmuebles con vocación comercial establecida</li>
+                    <li>Supermercados, bodegas, uso mixto</li>
+                    <li>Certificados de tradición al día</li>
+                </ul>
+
+                <h3 style="margin-top: 25px;">Balance Actual</h3>
+                <table>
+                    <tr>
+                        <td>Activos totales</td>
+                        <td class="number" style="font-weight: bold;">$20.488 MM</td>
+                    </tr>
+                    <tr>
+                        <td>Pasivos totales</td>
+                        <td class="number" style="font-weight: bold;">$851 MM</td>
+                    </tr>
+                    <tr style="background: #d4edda;">
+                        <td><strong>Patrimonio neto</strong></td>
+                        <td class="number" style="font-weight: bold; color: #27ae60;">$19.636 MM</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Endeudamiento</strong></td>
+                        <td class="number" style="font-weight: bold;">4,2%</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+                <h2 style="color: #e74c3c; margin-top: 0;">Los Problemas</h2>
+                
+                <div class="alert-box">
+                    <h3 style="margin: 0 0 8px 0;">1. Desafío de Liquidez</h3>
+                    <ul style="margin: 5px 0 0 20px; font-size: 0.9em;">
+                        <li>Cero ingresos operativos desde enero 2025</li>
+                        <li>Pérdida acumulada: $275 MM (9 meses 2025)</li>
+                        <li>Efectivo: $360 MM</li>
+                    </ul>
+                </div>
+
+                <div class="alert-box">
+                    <h3 style="margin: 0 0 8px 0;">2. Inquilino en Mora</h3>
+                    <ul style="margin: 5px 0 0 20px; font-size: 0.9em;">
+                        <li>El Arrozal dejó de pagar $59,1 MM/mes</li>
+                        <li>Deuda: $150 MM más cánones atrasados</li>
+                        <li>Proceso legal de restitución activo</li>
+                    </ul>
+                </div>
+
+                <div class="alert-box">
+                    <h3 style="margin: 0 0 8px 0;">3. Prediales Vencidos</h3>
+                    <ul style="margin: 5px 0 0 20px; font-size: 0.9em;">
+                        <li>Monto acumulado: $644 MM</li>
+                        <li>76% de los pasivos totales</li>
+                        <li>Riesgo de medidas coactivas</li>
+                    </ul>
+                </div>
+
+                
+            </div>
+        </div>
+
+        <div class="two-columns">
+            <div>
+			<h2 style="color: #d4af37; margin-top: 25px;">El Potencial</h2>
+                <div class="highlight-box">
+                    <ul style="margin: 5px 0 0 20px; font-size: 0.95em;">
+                        <li>Ingresos potenciales: $59,1 MM/mes</li>
+                        <li>Retorno proyectado 5 años: $6.377 MM</li>
+                        <li>Rendimiento anual: 3,76% sobre valor actual</li>
+                        <li>Valorización estimada: 15%</li>
+                    </ul>
+                </div>
+			</div>
+			
+			<div>
+			<h2 style="margin: 0 0 20px 0; color: #1a1a2e; margin-top: 25px;">La Ecuación</h2>
+            	<div class="highlight-box">
+				<ul style="margin: 5px 0 0 20px; font-size: 0.95em;">
+                <strong style="color: #27ae60;">Activos Comerciales $18.868 MM</strong> + 
+                <strong style="color: #1a1a2e;">Endeudamiento Bajo (4,2%)</strong> + 
+                <strong style="color: #e74c3c;">Situación Temporal</strong> = 
+                <strong style="color: #d4af37;">Oportunidad con Alto Potencial</strong>	
+            	</ul>
+			</div>					
+			</div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Navigation Dots -->
+    <div class="navigation">
+        <div class="nav-indicator" id="navIndicator"></div>
+    </div>
+
+    <!-- Slide Number Indicator -->
+    <div class="slide-number" id="slideNumber">Slide 1/9</div>
+
+    <script>
+        const container = document.getElementById('slideContainer');
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let currentSlideIndex = 0;
+
+        // Create navigation dots
+        function createNavDots() {
+            const navIndicator = document.getElementById('navIndicator');
+            navIndicator.innerHTML = '';
+            
+            slides.forEach((slide, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'nav-dot';
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => scrollToSlide(index));
+                navIndicator.appendChild(dot);
+            });
+        }
+
+        // Scroll to specific slide
+        function scrollToSlide(index) {
+            const slide = slides[index];
+            container.scrollTo({
+                top: slide.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+
+        // Update active dot and slide number on scroll
+        function updateNavigation() {
+            const scrollPosition = container.scrollTop + container.offsetHeight / 2;
+            
+            slides.forEach((slide, index) => {
+                const slideTop = slide.offsetTop;
+                const slideBottom = slideTop + slide.offsetHeight;
+                
+                if (scrollPosition >= slideTop && scrollPosition < slideBottom) {
+                    if (currentSlideIndex !== index) {
+                        currentSlideIndex = index;
+                        
+                        // Update dots
+                        document.querySelectorAll('.nav-dot').forEach((dot, dotIndex) => {
+                            dot.classList.toggle('active', dotIndex === index);
+                        });
+                        
+                        // Update slide number
+                        document.getElementById('slideNumber').textContent = `Slide ${index + 1}/${totalSlides}`;
+                    }
+                }
+            });
+        }
+
+        // Initialize
+        createNavDots();
+        updateNavigation();
+
+        // Listen to scroll in container
+        container.addEventListener('scroll', updateNavigation);
+        window.addEventListener('load', updateNavigation);
+
+        // Keyboard navigation (optional)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                e.preventDefault();
+                if (currentSlideIndex < totalSlides - 1) {
+                    scrollToSlide(currentSlideIndex + 1);
+                }
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                e.preventDefault();
+                if (currentSlideIndex > 0) {
+                    scrollToSlide(currentSlideIndex - 1);
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
